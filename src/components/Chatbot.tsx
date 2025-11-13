@@ -9,7 +9,7 @@ type Message = {
 
 type Screen = 'home' | 'chat' | 'faq' | 'appointment';
 
-const WELCOME_MESSAGE = `Hi! Welcome to Adams Heating & Cooling. How can we help you today?`;
+const WELCOME_MESSAGE = `Hi! Welcome to Seven Petal Electric. How can we help you today?`;
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -24,10 +24,10 @@ const Chatbot = () => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   const [userId] = useState(() => {
-    const existing = sessionStorage.getItem("adams_user_id");
+    const existing = sessionStorage.getItem("sevenpetals_user_id");
     if (existing) return existing;
     const random = `user_${Math.random().toString(36).substring(2, 10)}`;
-    sessionStorage.setItem("adams_user_id", random);
+    sessionStorage.setItem("sevenpetals_user_id", random);
     return random;
   });
 
@@ -64,72 +64,65 @@ const Chatbot = () => {
     }
   }, [messages, userId]);
 
-  const faqData = [
-    {
-      question: "What services does Adams Heating & Cooling provide?",
-      answer: "We provide comprehensive HVAC services including installation, repair, maintenance, and replacement for heating and air conditioning systems. We serve residential and commercial properties in Tuscaloosa and Birmingham, AL."
-    },
-    {
-      question: "Do you offer emergency repair services?",
-      answer: "Yes! We offer 24/7 emergency HVAC services for urgent heating and cooling issues. Call us immediately at (205) 462-8303 for emergency assistance."
-    },
-    {
-      question: "How do I know if my AC or heating system needs repair?",
-      answer: "Common warning signs include unusual noises, weak airflow, inconsistent temperatures, higher energy bills, frequent cycling, strange odors, or moisture around the unit. Contact us for a professional inspection if you notice any of these issues."
-    },
-    {
-      question: "How can I schedule a service appointment?",
-      answer: "You can schedule service by calling us at (205) 462-8303, using our online booking system, emailing info@adamssvcs.com, or chatting with us here. We offer flexible scheduling to accommodate your needs."
-    },
-    {
-      question: "Do you install energy-efficient HVAC systems?",
-      answer: "Absolutely! We specialize in installing modern, energy-efficient HVAC systems that can significantly reduce your energy costs while keeping you comfortable year-round. We can recommend the best options for your home or business."
-    },
-    {
-      question: "What areas do you serve?",
-      answer: "We proudly serve Tuscaloosa, Birmingham, and the surrounding metro areas in Alabama. Our main offices are located in Tuscaloosa (3415 Hargrove Road East) and Birmingham (1236 Blue Ridge Blvd, Suite 111, Hoover)."
-    },
-    {
-      question: "How often should I have my HVAC system serviced?",
-      answer: "We recommend having your HVAC system serviced at least twice a year - once before the cooling season and once before the heating season. Regular maintenance helps prevent breakdowns, improves efficiency, and extends the life of your system."
-    },
-    {
-      question: "What is your experience and how long have you been in business?",
-      answer: "Adams Heating & Cooling brings over 35 years of experience and an unwavering commitment to exceptional customer service. Our highly trained technicians and expert staff are dedicated to ensuring your comfort year-round."
-    },
-    {
-      question: "Do you offer maintenance plans or service contracts?",
-      answer: "Yes! We offer comprehensive maintenance plans that include regular inspections, priority service, discounts on repairs, and peace of mind knowing your system is running efficiently. Contact us for details on our maintenance programs."
-    },
-    {
-      question: "What brands of HVAC equipment do you work with?",
-      answer: "We work with all major HVAC brands and use only the best equipment to ensure your comfort and satisfaction. Our technicians are experienced with a wide range of systems and can recommend the best options for your specific needs."
-    },
-    {
-      question: "Are you licensed and insured?",
-      answer: "Yes, Adams Heating & Cooling is fully licensed and insured. We maintain all necessary certifications and insurance to protect you and your property while providing top-quality HVAC services."
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept various payment methods including cash, checks, and major credit cards. We also offer financing options for larger installations and replacements. Contact us to discuss payment options that work best for you."
-    }
-  ];
+const faqData = [
+  {
+    question: "What services does Seven Petal Electric provide?",
+    answer: "We offer residential and commercial electrical services including generator installation, EV charger setup, surge protection, lighting upgrades, and full electrical repairs."
+  },
+  {
+    question: "Do you install and service home generators?",
+    answer: "Yes, we provide complete home generator installation, maintenance, and repair services to ensure your home stays powered during outages."
+  },
+  {
+    question: "What is a generator interlock and do you install them?",
+    answer: "A generator interlock allows a portable generator to safely power your main panel during outages. Yes, we install and configure generator interlocks for residential use."
+  },
+  {
+    question: "Do you offer EV charger installation?",
+    answer: "Absolutely. We install, test, and certify residential and commercial EV charging stations for safe and reliable operation."
+  },
+  {
+    question: "Why should I install surge protectors in my home?",
+    answer: "Whole-home surge protectors help prevent damage to your appliances, electronics, and electrical system from unexpected power surges."
+  },
+  {
+    question: "Are your electricians licensed and insured?",
+    answer: "Yes, all of our electricians are fully licensed and insured to guarantee safe, professional, and high-quality electrical work."
+  },
+  {
+    question: "Do you provide electrical services for businesses?",
+    answer: "Yes, we serve both residential and commercial properties, offering lighting, wiring, panel upgrades, and maintenance solutions."
+  },
+  {
+    question: "Which areas do you serve?",
+    answer: "We proudly serve San Antonio and surrounding areas including Schertz, Cibolo, New Braunfels, and Garden Ridge."
+  },
+  {
+    question: "How can I request a quote?",
+    answer: "You can reach us at (210) 201-4001 or email info@sevenpetal.com to schedule a consultation and receive a free quote."
+  },
+  {
+    question: "How much experience does your team have?",
+    answer: "Our team brings over 25 years of electrical experience, ensuring expert solutions tailored to every project."
+  }
+];
+
 
   const quickActions = [
-    
+
     {
       icon: MessageCircle,
       title: "Start a Chat",
       subtitle: "Get instant help from our team",
       action: () => setScreen('chat'),
-      gradient: "from-gray-700 to-gray-800"
+      gradient: "from-gray-600 to-gray-700"
     },
-   
+
     {
       icon: Mail,
       title: "Email Support",
-      subtitle: "info@adamssvcs.com",
-      action: () => window.open('mailto:info@adamssvcs.com'),
+      subtitle: "info@sevenpetal.com",
+      action: () => window.open('mailto:info@sevenpetal.com'),
       gradient: "from-gray-600 to-gray-700"
     }
   ];
@@ -139,7 +132,7 @@ const Chatbot = () => {
     setTypingMessage("Support agent is typing...");
 
     try {
-      const response = await fetch("https://auto.robogrowthpartners.com/webhook/adam-chatbot", {
+      const response = await fetch("https://auto.robogrowthpartners.com/webhook/seven-petale-chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: userId, message: userMessage })
@@ -149,7 +142,7 @@ const Chatbot = () => {
       const replies = (data.reply || "").split("\\k").filter((part: string) => part.trim() !== "");
 
       if (replies.length === 0) {
-        replies.push("Thank you for contacting Adams Heating & Cooling. How can we help you today?");
+        replies.push("Thank you for contacting Seven Petal Electric. How can we help you today?");
       }
 
       for (let i = 0; i < replies.length; i++) {
@@ -175,7 +168,7 @@ const Chatbot = () => {
       setTypingMessage(null);
       setMessages(prev => [...prev, {
         type: 'bot',
-        text: "I apologize for the inconvenience. Please contact us directly at (205) 462-8303 for immediate assistance.",
+        text: "I apologize for the inconvenience. Please contact us directly at (210)   201-4001 for immediate assistance.",
         timestamp: new Date()
       }]);
     }
@@ -249,7 +242,7 @@ const Chatbot = () => {
   if (!isOpen) return null;
 
 
- 
+
 
 
   return (
@@ -266,7 +259,7 @@ const Chatbot = () => {
       >
         <div className="flex flex-col h-full">
           {/* Header with Black/Gray Gradient */}
-          <div className={`relative overflow-hidden bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 ${screen === 'home' ? 'pb-8' : ''}`} style={{ borderRadius: '25px 25px 0 0', border: "none" }}>
+          <div className={`relative overflow-hidden bg-gradient-to-br from-slate-600 via-slate-700 to-slate-800 ${screen === 'home' ? 'pb-3' : ''}`} style={{ borderRadius: '25px 25px 0 0', border: "none" }}>
             {/* Animated Background Effects */}
             <div className="absolute inset-0 opacity-20">
               <div className="absolute w-40 h-40 bg-white rounded-full blur-3xl animate-pulse"
@@ -296,10 +289,10 @@ const Chatbot = () => {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-white to-gray-100 rounded-xl flex items-center justify-center shadow-lg">
-                    <div className="text-xl sm:text-2xl font-bold text-slate-800">A</div>
+                    <div className="text-xl sm:text-2xl font-bold text-slate-800"><img src="logo.png" alt="" /></div>
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg sm:text-xl tracking-wide">Adams HVAC</h3>
+                    <h3 className="font-bold text-lg sm:text-xl tracking-wide">Seven Petal Electric</h3>
                     <div className="flex items-center space-x-2 text-xs sm:text-sm opacity-90">
                       <span className="text-gray-300">❄️ Online Now</span>
                     </div>
@@ -308,7 +301,7 @@ const Chatbot = () => {
               </div>
 
               <div className="text-xs sm:text-sm opacity-90 text-gray-200">
-                {screen === 'home' && "👋 Expert Heating & Cooling Services in Alabama"}
+                {screen === 'home' && "We install generators, backup batteries and EV chargers"}
                 {screen === 'chat' && "💬 We typically respond within seconds"}
                 {screen === 'faq' && "❓ Quick answers to common questions"}
                 {screen === 'appointment' && "📅 Schedule your service appointment"}
@@ -316,8 +309,8 @@ const Chatbot = () => {
 
               {screen === 'home' && (
                 <div className="mt-2 sm:mt-3">
-                  <p className="text-sm sm:text-base opacity-80 leading-relaxed text-gray-200">
-                    Over 35 years of experience • Licensed & Insured
+                  <p className=" opacity-80 leading-relaxed text-gray-200" style={{fontSize:"14px"}}>
+                     Master Electrician with over 25 years of experience in all phases of residential and commercial construction.
                   </p>
                 </div>
               )}
@@ -342,15 +335,15 @@ const Chatbot = () => {
             {/* HOME SCREEN */}
             {screen === 'home' && (
               <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
-                
+
                 <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
                   <div className="text-center mb-3 sm:mb-4">
                     <h4 className="text-1xl sm:text-2xl font-bold text-slate-800 mb-2">
                       How Can We Help?
                     </h4>
-                    <p className="text-gray-600 text-sm sm:text-base">Professional HVAC services at your fingertips</p>
+                    <p className="text-gray-600 text-sm sm:text-base">Professional Electric services at your fingertips</p>
                   </div>
-<br />
+                  <br />
                   <div className="space-y-2 sm:space-y-3 ">
                     {quickActions.map((action, index) => {
                       const Icon = action.icon;
@@ -383,7 +376,7 @@ const Chatbot = () => {
                       <div>
                         <h5 className="font-bold text-slate-800 text-sm sm:text-base mb-1">24/7 Emergency Service Available</h5>
                         <p className="text-sm text-gray-700 leading-relaxed">
-                          HVAC emergencies? We're here to help anytime. Call us immediately at (205) 462-8303
+                          Our vision is to be the most reliable and trusted partner for all electrical needs.
                         </p>
                       </div>
                     </div>
@@ -401,15 +394,15 @@ const Chatbot = () => {
                       <div className={`max-w-[85%] sm:max-w-[80%]`}>
                         <div className={`flex items-end space-x-2 ${msg.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                           <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shadow-lg flex-shrink-0 ${msg.type === 'user'
-                            ? 'bg-gradient-to-br from-gray-700 to-gray-800'
-                            : 'bg-gradient-to-br from-slate-700 to-slate-900'
+                            ? 'bg-gradient-to-br from-gray-500 to-gray-600'
+                            : 'bg-gradient-to-br from-slate-600 to-slate-600'
                             }`}>
                             <span className="text-white text-xs font-bold">
                               {msg.type === 'user' ? 'U' : 'A'}
                             </span>
                           </div>
                           <div className={`px-3 sm:px-4 py-2 sm:py-3 rounded-2xl shadow-md ${msg.type === 'user'
-                            ? 'bg-gradient-to-br from-gray-700 to-gray-800 text-white rounded-br-sm'
+                            ? 'bg-gradient-to-br from-gray-600 to-gray-700 text-white rounded-br-sm'
                             : 'bg-white text-slate-800 rounded-bl-sm border border-gray-200'
                             }`}>
                             <div
@@ -428,8 +421,8 @@ const Chatbot = () => {
                   {typingMessage && (
                     <div className="flex justify-start">
                       <div className="flex items-end space-x-2">
-                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center shadow-lg">
-                          <span className="text-white text-xs font-bold">A</span>
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-slate-600 to-slate-900 flex items-center justify-center shadow-lg">
+                          <span className="text-white text-xs font-bold">S</span>
                         </div>
                         <div className="bg-white px-3 sm:px-4 py-2 sm:py-3 rounded-2xl rounded-bl-sm shadow-md border border-gray-200">
                           <div className="flex space-x-1.5">
@@ -458,7 +451,7 @@ const Chatbot = () => {
                     <button
                       onClick={sendMessage}
                       disabled={!input.trim() || botBusy}
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-slate-700 to-slate-900 hover:from-slate-800 hover:to-black disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-2xl flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-slate-600 to-slate-900 hover:from-slate-800 hover:to-black disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-2xl flex items-center justify-center transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
                     >
                       <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                     </button>
@@ -494,7 +487,7 @@ const Chatbot = () => {
             )}
 
             {/* APPOINTMENT SCREEN */}
-           
+
 
           </div>
 
@@ -525,7 +518,7 @@ const Chatbot = () => {
                       {item.label}
                     </span>
                     {isActive && (
-                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-10 sm:w-12 h-1 bg-gradient-to-r from-slate-700 to-slate-900 rounded-full"></div>
+                      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-10 sm:w-12 h-1 bg-gradient-to-r from-slate-600 to-slate-900 rounded-full"></div>
                     )}
                   </button>
                 );
