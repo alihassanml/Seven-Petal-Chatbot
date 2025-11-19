@@ -3,7 +3,7 @@ version: '3.9'
 services:
   frontend:
     build: .
-    container_name: barker-frontend
+    container_name: Seven-petal-chatbot
     ports:
       - "5124:80"
     restart: always
